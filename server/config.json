@@ -1,0 +1,4 @@
+{
+  "mongoUri": "mongodb+srv://dbUser:dbUser@cluster0.wqdqr.mongodb.net/hackathonTest?retryWrites=true&w=majority",
+  "parserUri": "https://reactparser.herokuapp.com/parse"
+}
