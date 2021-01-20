@@ -35,25 +35,26 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-const start = async () => {
-  try {
-    // Connect to DB
-    await mongoose.connect(config.mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    await app.listen(port, async () => {
-      console.log(`Server start on PORT ${port}`);
-      if (process.env.NODE_ENV === "production") {
-        await updateDb();
-        setInterval(updateDb, 1500000); // 25 minutes
-      }
-    });
-  } catch (e) {
-    console.log(e.message);
-    throw e;
-  }
-};
-
-start();
+// const start = async () => {
+//   try {
+//     // Connect to DB
+//     await mongoose.connect(config.mongoUri, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     });
+//
+//     await app.listen(port, async () => {
+//       console.log(`Server start on PORT ${port}`);
+//       if (process.env.NODE_ENV === "production") {
+//         await updateDb();
+//         setInterval(updateDb, 1500000); // 25 minutes
+//       }
+//     });
+//   } catch (e) {
+//     console.log(e.message);
+//     throw e;
+//   }
+// };
+//
+// start();
+module.exports = app;

@@ -1,0 +1,29 @@
+const app = require('../app');
+const mongoose = require("mongoose");
+const updateDb = require("../server/updateDb");
+const config = require("../server/config.json");
+
+const port = process.env.PORT || 8080;
+
+const start = async () => {
+    try {
+        // Connect to DBs
+        await mongoose.connect(config.mongoUri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
+        await app.listen(port, async () => {
+            console.log(`Server start on PORT ${port}`);
+            if (process.env.NODE_ENV === "production") {
+                await updateDb();
+                setInterval(updateDb, 1500000); // 25 minutes
+            }
+        });
+    } catch (e) {
+        console.log(e.message);
+        throw e;
+    }
+};
+
+start();
