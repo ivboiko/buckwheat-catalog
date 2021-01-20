@@ -11,6 +11,7 @@ const start = async () => {
         await mongoose.connect(config.mongoUri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            useCreateIndex: true,
         });
 
         await app.listen(port, async () => {

@@ -1,15 +1,10 @@
 const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
-const mongoose = require("mongoose");
 
 const Goods = require("./server/moduls/Goods");
 
 const parser = require("./server/parser");
-const config = require("./server/config.json");
-const updateDb = require("./server/updateDb");
-
-const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(favicon(__dirname + "/build/favicon.ico"));
@@ -35,6 +30,9 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+module.exports = app;
+
+// старі налаштування входа в сервер
 // const start = async () => {
 //   try {
 //     // Connect to DB
@@ -57,4 +55,4 @@ app.get("/*", function (req, res) {
 // };
 //
 // start();
-module.exports = app;
+
