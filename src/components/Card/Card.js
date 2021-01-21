@@ -4,7 +4,7 @@ import BestPrice from '../common/BestPrice/BestPrice';
 
 const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice}) => {
   return (
-    <div className="card-container">
+    <div className={`card-container ${bestPrice && 'best-price-card-container'}`}>
       <div className="number">
         {number}.
       </div>
