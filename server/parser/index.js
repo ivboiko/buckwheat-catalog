@@ -17,48 +17,53 @@ const getPage = async (url) => {
   }
 };
 
-const getAllCards = (html) => {
-  try {
-    const $ = cheerio.load(html);
-    let cards = [];
-    $(".products-box__list-item").each((index, item) => {
-      cards.push($(item));
-    });
-    return cards;
-  } catch (e) {
-    throw e;
-  }
+
+const parseBrand = async (url) => {
+  priceForKg
+  const html = await getPage(url);
+  const $ = cheerio.load(html);
+  const brand= $(".BigProductCardTrademarkName").text();
+  return brand;
+
+
 };
 
-const parseCard = (card, shop, url) => {
-  let price = +card.find(".Price__value_caption").text();
+const parseCard = async (card, shop, url) => {
+  let priceForKg = 0;
+  const priceForPack = +card.find(".Price__value_caption").text();
   const weight = +card.find(".product-tile__weight").text().split(" ")[0];
 
   if (card.find(".product-tile__weight").text() !== "1 кг") {
-    price = +((1000 * price) / weight).toFixed(2);
+    priceForKg = +((1000 * priceForPack) / weight).toFixed(2);
   }
 
   const link = url.split("/uk/")[0] + card.find("a").attr("href");
 
+  const brand = await parseBrand(link);
+
   return {
-    price,
+    priceForPack,
+    priceForKg,
     link,
     shop,
     name: card.find(".product-tile__title").text(),
     weight,
+    brand, 
   };
+
+  
 };
 
+
 const getDataPage = async (url, shop) => {
+
   const html = await getPage(url);
-  const cardsOnPage = getAllCards(html);
-
-  let data = [];
-  cardsOnPage.forEach((item) => {
+  const $ = cheerio.load(html);
+  const cardsOnPage = parseCard($(".products-box__list-item").first(),shop,url);
+  return cardsOnPage;
+  /*cardsOnPage.forEach((item) => {
     data.push(parseCard(item, shop, url));
-  });
-
-  return data;
+  });*/
 };
 
 module.exports = async () => {
@@ -66,7 +71,7 @@ module.exports = async () => {
   // затримка?
   for (const key in link) {
     const cards = await getDataPage(link[key], key);
-    allCards = allCards.concat(cards);
+    allCards.push(cards);
   }
 
   return allCards;
