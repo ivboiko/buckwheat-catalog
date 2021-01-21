@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  background-color: #F2F2F2;
+}
+
+@font-face {
+  font-family: 'MoreMore';
+  src: local('Montserrat-Medium'), url(./assets/fonts/MoreMore.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: local('Montserrat-Medium'), url(./assets/fonts/Montserrat-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: local('Montserrat-Regular'), url(./assets/fonts/Montserrat-Regular.ttf) format('truetype');
+}

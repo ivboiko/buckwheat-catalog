@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.scss';
+import Header from './components/Header/Header';
+import Card from './components/Card/Card';
+import novus from './assets/imgs/NOVUS_logo.png'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <Header />
+    <Card
+      number={1}
+      logoSrc={novus}
+      storeName='Novus'
+      productName='Крупа гречана Novus ядриця швидкорозварювана'
+      weight='400 г'
+      price={22.99}
+      bestPrice />
+  </>
+);
 
 export default App;
