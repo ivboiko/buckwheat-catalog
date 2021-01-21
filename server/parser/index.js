@@ -19,7 +19,7 @@ const getPage = async (url) => {
 
 
 const parseBrand = async (url) => {
-
+  priceForKg
   const html = await getPage(url);
   const $ = cheerio.load(html);
   const brand= $(".BigProductCardTrademarkName").text();
@@ -29,7 +29,7 @@ const parseBrand = async (url) => {
 };
 
 const parseCard = async (card, shop, url) => {
-
+  let priceForKg = 0;
   const priceForPack = +card.find(".Price__value_caption").text();
   const weight = +card.find(".product-tile__weight").text().split(" ")[0];
 

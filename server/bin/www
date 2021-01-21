@@ -1,7 +1,7 @@
 const app = require('../app');
 const mongoose = require("mongoose");
-const updateDb = require("../server/updateDb");
-const config = require("../server/config.json");
+const updateDb = require("../updateDb");
+const config = require("../config.json");
 
 const port = process.env.PORT || 8080;
 
