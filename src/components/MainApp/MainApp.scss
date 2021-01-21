@@ -1,0 +1,20 @@
+.main-app-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 39px;
+  padding-inline: 30px;
+  flex-wrap: wrap;
+
+  & :last-child {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 1123px) {
+  .main-app-container {
+    & :last-child {
+      margin-top: 40px;
+      margin-left: 0;
+    }
+  }
+}

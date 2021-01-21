@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.scss';
-import BestPrice from '../common/BestPrice/BestPrice';
+import BestPrice from '../../../common/BestPrice/BestPrice';
 
 const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice}) => {
   return (
