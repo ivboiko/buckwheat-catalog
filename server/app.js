@@ -10,7 +10,7 @@ app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "../build")));
 
 app.use("/sort", require('./routers/sort'));
-app.use("/sort", require('./routers/getData'));
+app.use("/data", require('./routers/getData'));
 
 app.get("/*", function (req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
