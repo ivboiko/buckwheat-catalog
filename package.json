@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon ./server/bin/www",
+    "server": "cross-env NODE_ENV=development nodemon ./server/bin/www",
     "dev": "cross-env NODE_ENV=development concurrently \"yarn run server\" \" yarn run client\""
   },
   "eslintConfig": {
