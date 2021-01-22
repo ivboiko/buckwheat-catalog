@@ -1,42 +1,48 @@
-import React from 'react';
-import {Line, LineChart, XAxis, YAxis,} from "recharts";
-
-const data = [
-    {
-        name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-    },
-    {
-        name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-    },
-    {
-        name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-    },
-    {
-        name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-    },
-    {
-        name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-    },
-    {
-        name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-    },
-    {
-        name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-    },
-];
+import React, { useRef, useState, useLayoutEffect } from "react";
+import { Line, LineChart, XAxis, YAxis } from "recharts";
+import "./DataBuckwheat.scss";
+import data from "./data.json";
+import Spinner from "./Spinner";
 
 const GraphicBuckwheat = () => {
+  const targetRef = useRef();
+  const [isMounting, setIsMounting] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
+
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setDimensions({
+        width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight,
+      });
+    }
+    setIsMounting(true);
+  }, []);
+
+  if (!isMounting) {
     return (
-        <div className="graphic-container">
-            <LineChart width={320} height={255} data={data}>
-                <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
-                <Line type="monotone" dataKey="pv" stroke="red"/>
-                <Line type="monotone" dataKey="amt" stroke="yellow"/>
-                <XAxis dataKey="name"/>
-                <YAxis/>
-            </LineChart>
+      <div className="graphic-container">
+        <div ref={targetRef} className="graphic__container-inner">
+          <Spinner />
         </div>
+      </div>
     );
+  }
+
+  return (
+
+      <div className="graphic__container">
+        <LineChart
+          width={dimensions.width-30}
+          height={300}
+          data={data}
+        >
+          <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" />
+          <XAxis dataKey="name" />
+          <YAxis />
+        </LineChart>
+      </div>
+  );
 };
 
 export default GraphicBuckwheat;
