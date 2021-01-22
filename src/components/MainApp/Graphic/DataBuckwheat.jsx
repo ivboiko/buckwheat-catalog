@@ -1,12 +1,12 @@
 import React from 'react';
-
+import './DataBuckwheat.scss';
 
 
 const DataBuckwheat = () => {
     return (
-        <>
-            Тут повині бути дані
-        </>
+        <div id="DataBlock">
+            <a>NICE</a>
+        </div>
     );
 };
 
