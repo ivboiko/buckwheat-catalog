@@ -1,4 +1,4 @@
 {
   "mongoUri": "mongodb+srv://dbUser:dbUser@cluster0.wqdqr.mongodb.net/hackathonTest?retryWrites=true&w=majority",
-  "parserUri": "http://localhost:8080/parse"
+  "parserUri": "http://localhost:8080/data/parse"
 }

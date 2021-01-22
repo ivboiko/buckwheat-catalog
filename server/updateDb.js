@@ -1,31 +1,33 @@
 const axios = require("axios");
 const config = require("./config.json");
-const Goods = require("./moduls/Goods");
 const PriceDay = require("./moduls/PriceDay");
 
-
 module.exports = async () => {
-  try {
-    const response = await axios.get(config.parserUri);
-    await Goods.deleteMany({});
-    await Goods.insertMany(response.data);
+    try {
 
-    let today = new Date();
-    today.setHours(0, 0, 0, 0);
+        const response = await axios.get(config.parserUri);
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-    const result = await PriceDay.findOne({day: today});
-    // console.log(result)
+        const result = await PriceDay.findOne({day: today});
+        console.log(result)
 
-    if (!result) {
-      console.log('false')
-      await new PriceDay({
-        day: today,
-        goods: response.data,
-      }).save();
+        if (!result) {
+            console.log('false')
+            await new PriceDay({
+                day: today,
+                goods: response.data,
+            }).save();
+        } else {
+            console.log("update")
+            await PriceDay.updateOne({day: today}, {
+                day: today,
+                goods: response.data,}
+            );
+        }
+
+    } catch (e) {
+        console.log(e.message);
+        throw e;
     }
-
-  } catch (e) {
-    console.log(e.message);
-    throw e;
-  }
 };

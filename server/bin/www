@@ -16,6 +16,7 @@ const start = async () => {
 
         await app.listen(port, async () => {
             console.log(`Server start on PORT ${port}`);
+
             if (process.env.NODE_ENV === "production") {
                 await updateDb();
                 setInterval(updateDb, 1500000); // 25 minutes
