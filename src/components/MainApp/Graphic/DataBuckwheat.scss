@@ -1,6 +1,57 @@
-div#DataBlock{
-    margin-top: 200;
-    height: 180;
-    width: 410;
+.DataBlock{
+
+    margin-left: 50px;
+    height: 180px;
+    width: 410px;
 
 }
+
+.NameBrand{
+    
+    font-family: 'Montserrat-Medium';
+    font-size: 24px;
+    font-weight: 600;
+
+}
+
+.description{
+
+    font-family: 'Montserrat-Medium';
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.DataPrice{
+
+    margin-top: 15px;
+    font-family: 'Montserrat-Medium';
+    font-size: 36px;
+    font-weight: 600;
+
+}
+
+.persent{
+
+    margin-left: 17px;
+    margin-top: 28px;
+    font-family: 'Inter-Bold';
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D6EEF;
+
+}
+
+.GoodsNumbers{
+
+    display: flex;
+
+}
+
+.arrow{
+
+    width: 16px;
+    height: 16px;
+
+}
+
