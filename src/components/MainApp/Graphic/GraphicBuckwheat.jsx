@@ -1,47 +1,58 @@
 import React, { useRef, useState, useLayoutEffect } from "react";
-import { Line, LineChart, XAxis, YAxis } from "recharts";
-import "./DataBuckwheat.scss";
+import { Line, LineChart, XAxis, YAxis, Tooltip } from "recharts";
+import CustomizedAxisTick from "./CustomizedAxisTick";
+import "./GraphicBuckwheat.scss";
 import data from "./data.json";
-import Spinner from "./Spinner";
 
 const GraphicBuckwheat = () => {
   const targetRef = useRef();
-  const [isMounting, setIsMounting] = useState(false);
+  const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
 
-  useLayoutEffect(() => {
+  const test_dimensions = () => {
     if (targetRef.current) {
       setDimensions({
         width: targetRef.current.offsetWidth,
         height: targetRef.current.offsetHeight,
       });
     }
-    setIsMounting(true);
-  }, []);
+    setIsGraphicReady(true);
+  };
 
-  if (!isMounting) {
-    return (
-      <div className="graphic-container">
-        <div ref={targetRef} className="graphic__container-inner">
-          <Spinner />
-        </div>
-      </div>
-    );
+  const RESET_TIMEOUT = 100;
+
+  useLayoutEffect(test_dimensions, []);
+
+  let movement_timer = null;
+
+  window.addEventListener("resize", () => {
+    clearInterval(movement_timer);
+    setIsGraphicReady(false);
+    movement_timer = setTimeout(test_dimensions, RESET_TIMEOUT);
+  });
+
+  if (!isGraphicReady) {
+    return <div ref={targetRef} className="graphic-container"></div>;
   }
 
   return (
-
-      <div className="graphic__container">
-        <LineChart
-          width={dimensions.width-30}
-          height={300}
-          data={data}
-        >
-          <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" />
-          <XAxis dataKey="name" />
-          <YAxis />
-        </LineChart>
-      </div>
+    <div className="graphic__container">
+      <LineChart width={dimensions.width - 30} height={300} data={data}>
+        <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" strokeWidth={2} />
+        <XAxis
+          dataKey="name"
+          axisLine={false}
+          tickLine={false}
+          tick={<CustomizedAxisTick axis="x" />}
+        />
+        <YAxis
+          axisLine={false}
+          tickLine={false}
+          tick={<CustomizedAxisTick axis="y" />}
+        />
+        <Tooltip cursor={false}/>
+      </LineChart>
+    </div>
   );
 };
 

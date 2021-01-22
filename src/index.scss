@@ -17,3 +17,13 @@ body {
   font-family: 'Montserrat-Regular';
   src: local('Montserrat-Regular'), url(./assets/fonts/Montserrat-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: local('Inter-Bold'), url(./assets/fonts/Inter-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: local('Inter-Regular'), url(./assets/fonts/Inter-Regular.ttf) format('truetype');
+}

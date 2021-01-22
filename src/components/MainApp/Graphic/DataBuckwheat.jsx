@@ -1,5 +1,5 @@
 import React from 'react';
-import './DataBuckwheat.scss';
+import './GraphicBuckwheat.scss';
 
 
 
