@@ -19,7 +19,6 @@ const getPage = async (url) => {
 
 
 const parseBrand = async (url) => {
-  priceForKg
   const html = await getPage(url);
   const $ = cheerio.load(html);
   const brand= $(".BigProductCardTrademarkName").text();
