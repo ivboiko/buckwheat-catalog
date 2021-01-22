@@ -1,11 +1,12 @@
 .card-container {
   background-color: #ffffff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  max-width: 570px;
+  min-width: 570px;
   min-height: 80px;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 
   .number {
     align-self: center;
