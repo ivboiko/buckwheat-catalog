@@ -1,7 +1,7 @@
 import React from 'react';
 import './Graphic.scss';
-import GraphicBuckwheat from "./GraphicBuckwheat";
-import DataBuckwheat from "./DataBuckwheat";
+import GraphicBuckwheat from './GraphicBuckwheat';
+import DataBuckwheat from './DataBuckwheat';
 
 const Graphic = () => {
   return (

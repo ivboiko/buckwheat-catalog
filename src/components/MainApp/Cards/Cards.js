@@ -2,12 +2,28 @@ import React from 'react';
 import './Cards.scss';
 import novus from '../../../assets/imgs/NOVUS_logo.png';
 import Card from './Card/Card';
+import DataPicker from '../../common/DataPicker/DataPicker';
 
 const Cards = ({cards}) => {
+  const initialButtonsData = [
+    {
+      id: 1,
+      value: 'За 1 кілограм',
+      isActive: true,
+      onClickHandler: () => console.log('За 1 кілограм'),
+    },
+    {
+      id: 2,
+      value: 'За упаковку',
+      isActive: false,
+      onClickHandler: () => console.log('За упаковку'),
+    },
+  ];
+
   return (
     <div className="container app-child">
       <div className="card-filters">
-        Фильтры
+        <DataPicker initialData={initialButtonsData}/>
       </div>
       <div className="cards-container">
         <Card

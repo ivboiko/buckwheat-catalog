@@ -3,6 +3,7 @@ import { Line, LineChart, XAxis, YAxis, Tooltip } from "recharts";
 import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
 import data from "./data.json";
+import DataPicker from '../../../common/DataPicker/DataPicker';
 
 const GraphicBuckwheat = () => {
   const targetRef = useRef();
@@ -32,27 +33,53 @@ const GraphicBuckwheat = () => {
   });
 
   if (!isGraphicReady) {
-    return <div ref={targetRef} className="graphic-container"></div>;
+    return <div ref={targetRef} className="graphic-container"/>;
   }
 
+  const initialButtonsData = [
+    {
+      id: 1,
+      value: 'Тиждень',
+      isActive: false,
+      onClickHandler: () => console.log('Тиждень'),
+    },
+    {
+      id: 2,
+      value: 'Місяць',
+      isActive: true,
+      onClickHandler: () => console.log('Місяць'),
+    },
+    {
+      id: 3,
+      value: 'Рік',
+      isActive: false,
+      onClickHandler: () => console.log('Рік'),
+    },
+  ];
+
   return (
-    <div className="graphic__container">
-      <LineChart width={dimensions.width - 30} height={300} data={data}>
-        <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" strokeWidth={2} />
-        <XAxis
-          dataKey="name"
-          axisLine={false}
-          tickLine={false}
-          tick={<CustomizedAxisTick axis="x" />}
-        />
-        <YAxis
-          axisLine={false}
-          tickLine={false}
-          tick={<CustomizedAxisTick axis="y" />}
-        />
-        <Tooltip cursor={false}/>
-      </LineChart>
-    </div>
+    <>
+      <div className="graphic-filters">
+        <DataPicker initialData={initialButtonsData} />
+      </div>
+      <div className="graphic__container">
+        <LineChart width={dimensions.width - 30} height={200} data={data}>
+          <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" strokeWidth={2} />
+          <XAxis
+            dataKey="name"
+            axisLine={false}
+            tickLine={false}
+            tick={<CustomizedAxisTick axis="x" />}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tick={<CustomizedAxisTick axis="y" />}
+          />
+          <Tooltip cursor={false}/>
+        </LineChart>
+      </div>
+    </>
   );
 };
 

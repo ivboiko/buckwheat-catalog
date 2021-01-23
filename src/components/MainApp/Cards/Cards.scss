@@ -10,8 +10,10 @@
   padding-bottom: 20px;
 
   .card-filters {
-    height: 84px;
-    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 19px;
   }
 
   .cards-container {
