@@ -13,10 +13,14 @@
     flex-direction: row;
     justify-content: space-between;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+    height: 75px;
 
-    .cards-sort-container {
+    .cards-filters-picker, .cards-sort-container {
       display: flex;
       align-items: center;
+    }
+
+    .cards-sort-container {
       margin-right: 28px;
     }
   }
@@ -31,7 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     margin-bottom: 20px;
 
     &::-webkit-scrollbar {

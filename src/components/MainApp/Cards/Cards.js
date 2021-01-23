@@ -28,7 +28,9 @@ const Cards = ({cards}) => {
   return (
     <div className="container app-child">
       <div className="card-filters">
-        <DataPicker initialData={initialButtonsData}/>
+        <div className="cards-filters-picker">
+          <DataPicker initialData={initialButtonsData} />
+        </div>
         <div className="cards-sort-container">
           <PriceSort />
           <AppDropdown />
