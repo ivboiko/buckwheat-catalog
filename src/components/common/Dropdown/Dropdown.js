@@ -24,11 +24,11 @@ const AppDropdown = () => {
   const defaultOption = options[0];
 
   const ArrowUp = () => {
-    return <img src={dropdown_up} alt="up arrow"/>
+    return <img src={dropdown_up} alt="up arrow" className="dr-arrow" />
   };
 
   const ArrowDown = () => {
-    return <img src={dropdown_down} alt="up arrow"/>
+    return <img src={dropdown_down} alt="up arrow" className="dr-arrow" />
   };
 
   return (
@@ -37,6 +37,7 @@ const AppDropdown = () => {
       menuClassName="menu dropdown-text"
       arrowOpen={<ArrowUp />}
       arrowClosed={<ArrowDown />}
+      arrowClassName="arrow-dropdown"
       options={options}
       value={defaultOption} />
   );

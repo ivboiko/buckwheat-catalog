@@ -5,8 +5,7 @@ const ThemeSwitcher = () => (
   <div className="toggleWrapper">
     <input type="checkbox" className="dn" id="dn"/>
     <label htmlFor="dn" className="toggle">
-    <span className="toggle__handler">
-    </span>
+    <span className="toggle__handler"/>
     </label>
   </div>
 );
