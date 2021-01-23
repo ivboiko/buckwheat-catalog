@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.scss';
 import BestPrice from '../../../common/BestPrice/BestPrice';
 
-const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice}) => {
+const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice, increase, procent}) => {
   return (
     <div className={`card-container ${bestPrice && 'best-price-card-container'}`}>
       <div className="number">
@@ -28,6 +28,10 @@ const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice
         </div>
         {bestPrice && <BestPrice />}
       </div>
+        <div className="price-increase" >
+            <img src={increase} alt="bad connection"/>
+            <div className="cheng"> {procent}%</div>
+        </div>
     </div>
   );
 };

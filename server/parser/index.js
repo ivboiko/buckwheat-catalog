@@ -2,6 +2,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 let link = require("./link.json");
 
+// "proxy": "http://localhost:8080",
+
 const getPage = async (url) => {
   try {
     const response = await axios.get(url, {
@@ -13,7 +15,7 @@ const getPage = async (url) => {
 
     return response.data;
   } catch (e) {
-    throw e;
+    console.log(e)
   }
 };
 
@@ -60,14 +62,12 @@ const getDataPage = async (url, shop) => {
   const $ = cheerio.load(html);
   const cardsOnPage = parseCard($(".products-box__list-item").first(),shop,url);
   return cardsOnPage;
-  /*cardsOnPage.forEach((item) => {
-    data.push(parseCard(item, shop, url));
-  });*/
+
 };
 
 module.exports = async () => {
   let allCards = [];
-  // затримка?
+
   for (const key in link) {
     const cards = await getDataPage(link[key], key);
     allCards.push(cards);

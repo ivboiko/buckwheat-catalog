@@ -14,7 +14,7 @@ const DataBuckwheat = () => {
 
                 <div className="DataPrice">₴42.99</div>
 
-                <div className="persent">-12%<img className="arrow" src={arrowDown}/></div>
+                <div className="persent">-12%<img className="arrow" src={arrowDown} alt={'sdfklj'}/></div>
 
             </div>
 
