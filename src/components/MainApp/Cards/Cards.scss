@@ -12,8 +12,15 @@
   .card-filters {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    margin-left: 19px;
+    justify-content: space-between;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+    margin-bottom: 12px;
+
+    .cards-sort-container {
+      display: flex;
+      align-items: center;
+      margin-right: 28px;
+    }
   }
 
   .cards-container {

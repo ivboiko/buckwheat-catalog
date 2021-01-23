@@ -3,6 +3,8 @@ import './Cards.scss';
 import novus from '../../../assets/imgs/NOVUS_logo.png';
 import Card from './Card/Card';
 import DataPicker from '../../common/DataPicker/DataPicker';
+import PriceSort from '../../common/PriceSort/PriceSort';
+import AppDropdown from '../../common/Dropdown/Dropdown';
 
 const Cards = ({cards}) => {
   const initialButtonsData = [
@@ -24,6 +26,10 @@ const Cards = ({cards}) => {
     <div className="container app-child">
       <div className="card-filters">
         <DataPicker initialData={initialButtonsData}/>
+        <div className="cards-sort-container">
+          <PriceSort />
+          <AppDropdown />
+        </div>
       </div>
       <div className="cards-container">
         <Card

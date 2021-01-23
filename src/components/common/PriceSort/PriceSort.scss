@@ -1,0 +1,29 @@
+.price-sort-container {
+  height: 30px;
+  width: 94px;
+  margin-right: 20px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 0.5px solid #979797;
+  .price {
+    color: #838383;
+    font-family: Montserrat-Medium, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.2px;
+    margin-left: 14px;
+  }
+
+  .arrow {
+    margin-right: 14px;
+    width: 9px;
+    height: 10px;
+    margin-top: 1px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

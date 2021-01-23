@@ -1,18 +1,19 @@
 .picker-container {
-  height: 36px;
+  height: 31px;
   background-color: #ffffff;
-  border: 1px solid #F1F1F5;
+  border: 0.5px solid #979797;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  padding-inline: 5px;
+  padding-inline: 2px;
+  margin-left: 19px;
 
   & :not(:last-child) {
     margin-right: 5px;
   }
 
   .picker-item {
-    height: 28px;
+    height: 27px;
     min-width: 96px;
     outline: none;
     border-radius: 6px;
