@@ -9,11 +9,12 @@
 }
 
 .card-container {
-  min-width: 570px;
+  width: 570px;
   min-height: 80px;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
 
   &:not(:first-child) {
     margin-top: 10px;
@@ -43,6 +44,8 @@
 
   .text {
     align-self: center;
+    width: 165px;
+    margin-bottom: 10px;
 
     .store-name {
       font-family: Montserrat-Medium, serif;
@@ -75,13 +78,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    width: 150px;
 
     .price {
       font-family: Montserrat-Medium, serif;
       font-weight: 600;
       font-size: 28px;
       line-height: 24px;
-      align-self: center;
+      align-self: flex-end;
       padding-left: 60px;
       max-width: 125px;
     }
