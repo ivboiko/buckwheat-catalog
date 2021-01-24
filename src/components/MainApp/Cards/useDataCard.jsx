@@ -39,7 +39,7 @@ export function useDataCard() {
       const end = data[index].priceForKg;
 
       const procent = ((end - start) / start) * 100;
-      data[index].procent = procent;
+      data[index].procent = Math.round(procent);
       if (procent < 0) {
         data[index].increase = reduction;
       } else if (procent > 0) {

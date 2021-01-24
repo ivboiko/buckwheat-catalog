@@ -80,12 +80,13 @@ const Cards = ({ appTheme }) => {
               number={index}
               logoSrc={item.logoSrc}
               storeName={item.shop}
-              productName="Крупа гречана Novus ядриця швидкорозварювана"
-              weight={"400 г"}
+              productName={item.name}
+              weight={`${item.weight} г`}
               price={item.priceForPack}
               increase={item.increase}
               procent={item.procent}
               bestPrice={item.bestPrice}
+              appTheme={appTheme}
             />
           );
         })}

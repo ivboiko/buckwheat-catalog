@@ -12,7 +12,7 @@ const initialState = {
   appTheme: theme.light,
   price: [],
   priceMainPeriod: "week",
-  shop: "megamarket",
+  shop: "varus",
 };
 
 export const appReducer = (state = initialState, action) => {
