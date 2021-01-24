@@ -40,9 +40,9 @@ const Graphic = () => {
     }
   }, [week.loading, month.loading, year.loading, period]);
 
-  if (week.loading) {
-    console.log(week.price)
-  }
+  // if (week.loading) {
+  //   console.log(week.price)
+  // }
 
   return (
     <div className="graphic app-child">
