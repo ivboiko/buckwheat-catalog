@@ -3,7 +3,7 @@ import { Line, LineChart, XAxis, YAxis, Tooltip } from "recharts";
 import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
 import data from "./data.json";
-import DataPicker from '../../../common/DataPicker/DataPicker';
+import DataPicker from "../../../common/DataPicker/DataPicker";
 
 const GraphicBuckwheat = () => {
   const targetRef = useRef();
@@ -33,27 +33,27 @@ const GraphicBuckwheat = () => {
   });
 
   if (!isGraphicReady) {
-    return <div ref={targetRef} className="graphic-container"/>;
+    return <div ref={targetRef} className="graphic-container" />;
   }
 
   const initialButtonsData = [
     {
       id: 1,
-      value: 'Тиждень',
+      value: "Тиждень",
       isActive: false,
-      onClickHandler: () => console.log('Тиждень'),
+      onClickHandler: () => console.log("Тиждень"),
     },
     {
       id: 2,
-      value: 'Місяць',
+      value: "Місяць",
       isActive: true,
-      onClickHandler: () => console.log('Місяць'),
+      onClickHandler: () => console.log("Місяць"),
     },
     {
       id: 3,
-      value: 'Рік',
+      value: "Рік",
       isActive: false,
-      onClickHandler: () => console.log('Рік'),
+      onClickHandler: () => console.log("Рік"),
     },
   ];
 
@@ -64,7 +64,12 @@ const GraphicBuckwheat = () => {
       </div>
       <div className="graphic__container">
         <LineChart width={dimensions.width - 30} height={200} data={data}>
-          <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" strokeWidth={2} />
+          <Line
+            type="monotone"
+            dataKey="Ашан"
+            stroke="#1D6EEF"
+            strokeWidth={2}
+          />
           <XAxis
             dataKey="name"
             axisLine={false}
@@ -76,7 +81,7 @@ const GraphicBuckwheat = () => {
             tickLine={false}
             tick={<CustomizedAxisTick axis="y" />}
           />
-          <Tooltip cursor={false}/>
+          <Tooltip cursor={false} />
         </LineChart>
       </div>
     </>

@@ -1,7 +1,11 @@
-const TOGGLE_PRICE_IS_ASCENDING = 'TOGGLE_PRICE_IS_ASCENDING';
+const TOGGLE_PRICE_IS_ASCENDING = "TOGGLE_PRICE_IS_ASCENDING";
 
 const initialState = {
   priceAscending: true,
+  price: [],
+  priceGraphicPeriod: "week",
+  priceMainPeriod: "week",
+  shop: "megamarket",
 };
 
 export const appReducer = (state = initialState, action) => {

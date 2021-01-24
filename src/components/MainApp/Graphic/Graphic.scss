@@ -6,6 +6,13 @@
   border-radius: 16px;
 }
 
+.graphic-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 1175px) {
   .graphic {
     width: 610px;
