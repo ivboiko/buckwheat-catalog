@@ -2,10 +2,9 @@ import React, { useRef, useState, useLayoutEffect } from "react";
 import { Line, LineChart, XAxis, YAxis, Tooltip } from "recharts";
 import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
-import data from "./data.json";
-import DataPicker from '../../../common/DataPicker/DataPicker';
+import DataPicker from "../../../common/DataPicker/DataPicker";
 
-const GraphicBuckwheat = ({appTheme}) => {
+const GraphicBuckwheat = ({data, onSetPeriod, appTheme}) => {
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -33,27 +32,27 @@ const GraphicBuckwheat = ({appTheme}) => {
   });
 
   if (!isGraphicReady) {
-    return <div ref={targetRef} className="graphic-container"/>;
+    return <div ref={targetRef} className="graphic-container" />;
   }
 
   const initialButtonsData = [
     {
       id: 1,
-      value: 'Тиждень',
+      value: "Тиждень",
       isActive: false,
-      onClickHandler: () => console.log('Тиждень'),
+      onClickHandler: () => onSetPeriod('week'),
     },
     {
       id: 2,
-      value: 'Місяць',
+      value: "Місяць",
       isActive: true,
-      onClickHandler: () => console.log('Місяць'),
+      onClickHandler: () => onSetPeriod('month'),
     },
     {
       id: 3,
-      value: 'Рік',
+      value: "Рік",
       isActive: false,
-      onClickHandler: () => console.log('Рік'),
+      onClickHandler: () => onSetPeriod('year'),
     },
   ];
 
@@ -64,9 +63,14 @@ const GraphicBuckwheat = ({appTheme}) => {
       </div>
       <div className="graphic__container">
         <LineChart width={dimensions.width - 30} height={200} data={data}>
-          <Line type="monotone" dataKey="Ашан" stroke="#1D6EEF" strokeWidth={2} />
+          <Line
+            type="monotone"
+            dataKey="priceForPack"
+            stroke="#1D6EEF"
+            strokeWidth={2}
+          />
           <XAxis
-            dataKey="name"
+            dataKey="day"
             axisLine={false}
             tickLine={false}
             tick={<CustomizedAxisTick axis="x" />}
@@ -76,7 +80,7 @@ const GraphicBuckwheat = ({appTheme}) => {
             tickLine={false}
             tick={<CustomizedAxisTick axis="y" />}
           />
-          <Tooltip cursor={false}/>
+          <Tooltip cursor={false} />
         </LineChart>
       </div>
     </>

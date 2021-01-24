@@ -23,6 +23,7 @@ const formatDate = (date) => {
 
 router.get("/:period", async (req, res) => {
   try {
+    console.log("sort");
     const date = new Date();
     const today = formatDate(date);
     let startDate = "";
@@ -30,8 +31,10 @@ router.get("/:period", async (req, res) => {
 
     switch (req.params.period) {
       case "week":
-        date.setDate(date.getDate() - date.getDay() + 1);
+        let decrement = date.getDay() != 0 ? date.getDay() + 1 : 6;
+        date.setDate(date.getDate() - decrement);
         startDate = formatDate(date);
+        console.log(startDate);
         break;
 
       case "month":
@@ -48,7 +51,6 @@ router.get("/:period", async (req, res) => {
           month.setDate(2);
           month.setHours(0, 0, 0, 0);
           month.setMonth(i);
-          console.log(month);
           months.push(month);
         }
 

@@ -6,9 +6,13 @@ export const theme = {
   light: 'light',
 };
 
+
 const initialState = {
   priceAscending: true,
   appTheme: theme.light,
+  price: [],
+  priceMainPeriod: "week",
+  shop: "varus",
 };
 
 export const appReducer = (state = initialState, action) => {

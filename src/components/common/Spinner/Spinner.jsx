@@ -3,7 +3,7 @@ import './spinner.scss'
 
 const Spinner = () => {
     return (
-        <>
+        <div className="spinner-container">
             <div className="loadingio-spinner-spinner-ipsf2z5j4g">
                 <div className="ldio-z9sqw4sfbkd">
                     <div></div>
@@ -23,7 +23,7 @@ const Spinner = () => {
             <style type="text/css">
 
             </style>
-        </>
+        </div>
     );
 };
 
