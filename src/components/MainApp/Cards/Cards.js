@@ -6,26 +6,19 @@ import PriceSort from "../../common/PriceSort/PriceSort";
 import AppDropdown from "../../common/Dropdown/Dropdown";
 import { useDataCard } from "./useDataCard";
 import Spinner from "../../common/Spinner";
-import PriceSort from '../../common/PriceSort/PriceSort';
-import AppDropdown from '../../common/Dropdown/Dropdown';
-import classNames from 'classnames';
-import {theme} from '../../../redux/reducers/app-reducer';
+import classNames from "classnames";
+import { theme } from "../../../redux/reducers/app-reducer";
 
-
-
-const Cards = ({appTheme}) => {
+const Cards = ({ appTheme }) => {
   const cards = useDataCard();
   useEffect(() => {
     cards.request().catch((err) => console.log(err));
   }, []);
 
-  const cardsContainerClassName = classNames(
-      "container app-child",
-      {
-        "cards-light-container": appTheme === theme.light,
-        "cards-dark-container": appTheme === theme.dark,
-      },
-  );
+  const cardsContainerClassName = classNames("container app-child", {
+    "cards-light-container": appTheme === theme.light,
+    "cards-dark-container": appTheme === theme.dark,
+  });
 
   const initialButtonsData = [
     {
@@ -52,16 +45,16 @@ const Cards = ({appTheme}) => {
 
   const dropdownOptions = [
     {
-      value: 'Тиждень',
-      label: 'Тиждень',
+      value: "Тиждень",
+      label: "Тиждень",
     },
     {
-      value: 'Місяць',
-      label: 'Місяць',
+      value: "Місяць",
+      label: "Місяць",
     },
     {
-      value: 'Рік',
-      label: 'Рік',
+      value: "Рік",
+      label: "Рік",
     },
   ];
 
@@ -73,7 +66,11 @@ const Cards = ({appTheme}) => {
         </div>
         <div className="cards-sort-container">
           <PriceSort appTheme={appTheme} />
-          <AppDropdown appTheme={appTheme} options={dropdownOptions} defaultOption={dropdownOptions[0]}/>
+          <AppDropdown
+            appTheme={appTheme}
+            options={dropdownOptions}
+            defaultOption={dropdownOptions[0]}
+          />
         </div>
       </div>
       <div className="cards-container">
@@ -82,9 +79,9 @@ const Cards = ({appTheme}) => {
             <Card
               number={index}
               logoSrc={item.logoSrc}
-              storeName="Novus"
+              storeName={item.shop}
               productName="Крупа гречана Novus ядриця швидкорозварювана"
-              weight="400 г"
+              weight={"400 г"}
               price={item.priceForPack}
               increase={item.increase}
               procent={item.procent}
