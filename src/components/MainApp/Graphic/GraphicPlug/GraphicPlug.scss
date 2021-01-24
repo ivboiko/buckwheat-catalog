@@ -1,0 +1,36 @@
+.plug-light {
+  background-color: #ffffff;
+}
+
+.plug-dark {
+  background-color: #242731;
+}
+
+.plug-light-text {
+  color: #DADADA;
+}
+
+.plug-dark-text {
+  color: #4F566C;
+}
+
+.plug {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-bottom: 15px;
+  }
+
+  .plug-text {
+    font-family: Montserrat-Medium, serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    //margin-top: 15px;
+    max-width: 180px;
+    margin-bottom: 15px;
+  }
+}
