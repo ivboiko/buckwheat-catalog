@@ -6,13 +6,26 @@ import PriceSort from "../../common/PriceSort/PriceSort";
 import AppDropdown from "../../common/Dropdown/Dropdown";
 import { useDataCard } from "./useDataCard";
 import Spinner from "../../common/Spinner";
+import PriceSort from '../../common/PriceSort/PriceSort';
+import AppDropdown from '../../common/Dropdown/Dropdown';
+import classNames from 'classnames';
+import {theme} from '../../../redux/reducers/app-reducer';
 
-const Cards = () => {
+
+
+const Cards = ({appTheme}) => {
   const cards = useDataCard();
-
   useEffect(() => {
     cards.request().catch((err) => console.log(err));
   }, []);
+
+  const cardsContainerClassName = classNames(
+      "container app-child",
+      {
+        "cards-light-container": appTheme === theme.light,
+        "cards-dark-container": appTheme === theme.dark,
+      },
+  );
 
   const initialButtonsData = [
     {
@@ -37,13 +50,30 @@ const Cards = () => {
     );
   }
 
+  const dropdownOptions = [
+    {
+      value: 'Тиждень',
+      label: 'Тиждень',
+    },
+    {
+      value: 'Місяць',
+      label: 'Місяць',
+    },
+    {
+      value: 'Рік',
+      label: 'Рік',
+    },
+  ];
+
   return (
-    <div className="container app-child">
+    <div className={cardsContainerClassName}>
       <div className="card-filters">
-        <DataPicker initialData={initialButtonsData} />
+        <div className="cards-filters-picker">
+          <DataPicker initialData={initialButtonsData} appTheme={appTheme} />
+        </div>
         <div className="cards-sort-container">
-          <PriceSort />
-          <AppDropdown />
+          <PriceSort appTheme={appTheme} />
+          <AppDropdown appTheme={appTheme} options={dropdownOptions} defaultOption={dropdownOptions[0]}/>
         </div>
       </div>
       <div className="cards-container">

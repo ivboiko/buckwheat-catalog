@@ -1,20 +1,17 @@
-import React from "react";
-import "./DataBuckwheat.scss";
-import arrowDown from "../../../assets/imgs/Arrow_Down.png";
+import React from 'react';
+import './DataBuckwheat.scss';
+import arrowDown from '../../../assets/imgs/arrow_down.svg';
+import {getTextClassName} from '../../../utils/getTextClassName';
 
-const DataBuckwheat = ({ priceEnd = "", increase = 0 }) => {
+const DataBuckwheat = ({storeName, itemName, price, priceEnd = "", increase = 0, appTheme}) => {
   return (
     <div className="DataBlock">
-      <div className="NameBrand">{priceEnd.shop}</div>
-
-      <div className="description">{priceEnd.name}</div>
-
+      <div className={getTextClassName("NameBrand", appTheme)}>{storeName}</div>
+      <div className={getTextClassName("description", appTheme)}>{itemName}</div>
       <div className="GoodsNumbers">
-        <div className="DataPrice">₴{priceEnd.priceForPack}</div>
-
-        <div className="persent">
-          {increase}%
-          <img className="arrow" src={arrowDown} alt={"sdfklj"} />
+        <div className={getTextClassName("DataPrice", appTheme)}>₴{price}</div>
+        <div className="percent">
+          {increase}%<img className="arrow" src={arrowDown} alt="arrow down"/>
         </div>
       </div>
     </div>

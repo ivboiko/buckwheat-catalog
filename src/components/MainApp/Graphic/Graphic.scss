@@ -1,8 +1,15 @@
-.graphic {
+.graphic-light {
   background-color: #ffffff;
+}
+
+.graphic-dark {
+  background-color: #242731;
+}
+
+.graphic {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   width: 430px;
-  height: 530px;
+  height: 510px;
   border-radius: 16px;
 }
 

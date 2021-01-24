@@ -5,9 +5,11 @@ import DataBuckwheat from "./DataBuckwheat";
 import { usePeriodGraphic } from "./usePeriodGraphic";
 import Spinner from "../../common/Spinner";
 import { useSelector } from "react-redux";
+import classNames from 'classnames';
+import {theme} from '../../../redux/reducers/app-reducer';
 
-const Graphic = () => {
-  const [bestPrise, setBestPrise] = useState(null);
+const Graphic = ({appTheme}) => {
+    const [bestPrise, setBestPrise] = useState(null);
   const [dataGraphic, setDataGraphic] = useState([]);
   const [period, setPeriod] = useState("week");
 
@@ -44,18 +46,21 @@ const Graphic = () => {
     }
   }, [week.loading, month.loading, year.loading, period, shopName]);
 
-  // if (week.loading) {
-  //   console.log(week.getDataGraphic(shopName));
-  // }
-
+  const graphicClassName = classNames(
+      "graphic app-child",
+      {
+        "graphic-light": appTheme === theme.light,
+        "graphic-dark": appTheme === theme.dark,
+      },
+  );
   return (
-    <div className="graphic app-child">
+    <div className={graphicClassName}>
       {!year.loading || !month.loading || !week.loading ? (
         <Spinner />
       ) : (
         <>
-          <GraphicBuckwheat data={dataGraphic} onSetPeriod={setPeriod} />
-          <DataBuckwheat {...bestPrise} />
+          <GraphicBuckwheat data={dataGraphic} onSetPeriod={setPeriod} appTheme={appTheme} />
+          <DataBuckwheat {...bestPrise} appTheme={appTheme} />
         </>
       )}
     </div>

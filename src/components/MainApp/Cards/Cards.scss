@@ -1,5 +1,12 @@
-.container {
+.cards-light-container {
   background-color: #ffffff;
+}
+
+.cards-dark-container {
+  background-color: #242731;
+}
+
+.container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
@@ -7,23 +14,26 @@
   height: 510px;
   border-radius: 20px;
   justify-content: center;
-  padding-bottom: 20px;
 
   .card-filters {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
-    margin-bottom: 12px;
+    height: 75px;
 
-    .cards-sort-container {
+    .cards-filters-picker, .cards-sort-container {
       display: flex;
       align-items: center;
+    }
+
+    .cards-sort-container {
       margin-right: 28px;
     }
   }
 
   .cards-container {
+    padding-top: 12px;
     margin-right: auto;
     margin-left: auto;
     overflow-y: scroll;
@@ -32,15 +42,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
 
     &::-webkit-scrollbar {
       width: 3px;
-    }
-
-    &::-webkit-scrollbar-track {
-      margin-top: 20px;
-      margin-bottom: 15px;
     }
 
     &::-webkit-scrollbar-thumb {

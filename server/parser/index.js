@@ -23,19 +23,21 @@ const getPage = async (url) => {
 const parseBrand = async (url) => {
   const html = await getPage(url);
   const $ = cheerio.load(html);
-  const brand= $(".BigProductCardTrademarkName").text();
+  const brand = $(".BigProductCardTrademarkName").text();
   return brand;
 
 
 };
 
 const parseCard = async (card, shop, url) => {
-  let priceForKg = 0;
+  let priceForKg;
   const priceForPack = +card.find(".Price__value_caption").text();
   const weight = +card.find(".product-tile__weight").text().split(" ")[0];
 
   if (card.find(".product-tile__weight").text() !== "1 кг") {
     priceForKg = +((1000 * priceForPack) / weight).toFixed(2);
+  } else {
+    priceForKg = priceForPack;
   }
 
   const link = url.split("/uk/")[0] + card.find("a").attr("href");

@@ -1,40 +1,45 @@
 import React from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import dropdown_down from '../../../assets/imgs/dropdown_down.svg';
-import dropdown_up from '../../../assets/imgs/dropdown_up.svg';
+import dropdown_blue_down from '../../../assets/imgs/dropdown_down.svg';
+import dropdown_white_down from '../../../assets/imgs/dropdown_white_down.svg';
+import dropdown_blue_up from '../../../assets/imgs/dropdown_up.svg';
+import dropdown_white_up from '../../../assets/imgs/dropdown_white_up.svg';
 import './Dropdown.scss';
+import {theme} from '../../../redux/reducers/app-reducer';
+import classNames from 'classnames';
 
-const AppDropdown = () => {
-  const options = [
-    {
-      value: 'Тиждень',
-      label: 'Тиждень',
-    },
-    {
-      value: 'Місяць',
-      label: 'Місяць',
-    },
-    {
-      value: 'Рік',
-      label: 'Рік',
-    },
-  ];
-
-  const defaultOption = options[0];
-
+const AppDropdown = ({appTheme, options, defaultOption}) => {
   const ArrowUp = () => {
-    return <img src={dropdown_up} alt="up arrow" className="dr-arrow" />
+    return <img src={appTheme === theme.light ? dropdown_blue_up : dropdown_white_up} alt="up arrow" className="dr-arrow" />
   };
 
   const ArrowDown = () => {
-    return <img src={dropdown_down} alt="up arrow" className="dr-arrow" />
+    return <img src={appTheme === theme.light ? dropdown_blue_down : dropdown_white_down} alt="up arrow" className="dr-arrow" />
   };
+
+  const controlClassName = classNames(
+    "dropdown",
+    "dropdown-text",
+    {
+      "dropdown-light-text dropdown-light": appTheme === theme.light,
+      "dropdown-dark-text dropdown-dark": appTheme === theme.dark,
+    },
+  );
+
+  const menuClassName = classNames(
+    "menu",
+    "dropdown-text",
+    {
+      "dropdown-light-text menu-light": appTheme === theme.light,
+      "dropdown-dark-text menu-dark": appTheme === theme.dark,
+    },
+  );
 
   return (
     <Dropdown
-      controlClassName="dropdown dropdown-text"
-      menuClassName="menu dropdown-text"
+      controlClassName={controlClassName}
+      menuClassName={menuClassName}
       arrowOpen={<ArrowUp />}
       arrowClosed={<ArrowDown />}
       arrowClassName="arrow-dropdown"

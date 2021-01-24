@@ -1,13 +1,27 @@
+.price-sort-light-container {
+  background-color: #FFFFFF;
+  border: 0.5px solid #979797;
+}
+
+.price-sort-dark-container {
+  background-color: #373A43;
+}
+
+.price-light {
+  color: #838383;
+}
+
+.price-dark {
+  color: #979797;
+}
+
 .price-sort-container {
   height: 30px;
   width: 94px;
   margin-right: 20px;
-  background: #FFFFFF;
   border-radius: 6px;
-  border: 0.5px solid #979797;
 
   .price {
-    color: #838383;
     font-family: Montserrat-Medium, serif;
     font-style: normal;
     font-weight: 500;

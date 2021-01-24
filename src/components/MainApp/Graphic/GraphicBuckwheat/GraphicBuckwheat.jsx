@@ -4,7 +4,7 @@ import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
 import DataPicker from "../../../common/DataPicker/DataPicker";
 
-const GraphicBuckwheat = ({data, onSetPeriod}) => {
+const GraphicBuckwheat = ({data, onSetPeriod, appTheme}) => {
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -59,7 +59,7 @@ const GraphicBuckwheat = ({data, onSetPeriod}) => {
   return (
     <>
       <div className="graphic-filters">
-        <DataPicker initialData={initialButtonsData} />
+        <DataPicker initialData={initialButtonsData} appTheme={appTheme} />
       </div>
       <div className="graphic__container">
         <LineChart width={dimensions.width - 30} height={200} data={data}>
