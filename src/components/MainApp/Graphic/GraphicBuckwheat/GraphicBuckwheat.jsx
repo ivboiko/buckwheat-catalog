@@ -2,10 +2,9 @@ import React, { useRef, useState, useLayoutEffect } from "react";
 import { Line, LineChart, XAxis, YAxis, Tooltip } from "recharts";
 import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
-import data from "./data.json";
 import DataPicker from "../../../common/DataPicker/DataPicker";
 
-const GraphicBuckwheat = () => {
+const GraphicBuckwheat = ({data, onSetPeriod}) => {
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -41,19 +40,19 @@ const GraphicBuckwheat = () => {
       id: 1,
       value: "Тиждень",
       isActive: false,
-      onClickHandler: () => console.log("Тиждень"),
+      onClickHandler: () => onSetPeriod('week'),
     },
     {
       id: 2,
       value: "Місяць",
       isActive: true,
-      onClickHandler: () => console.log("Місяць"),
+      onClickHandler: () => onSetPeriod('month'),
     },
     {
       id: 3,
       value: "Рік",
       isActive: false,
-      onClickHandler: () => console.log("Рік"),
+      onClickHandler: () => onSetPeriod('year'),
     },
   ];
 
@@ -66,12 +65,12 @@ const GraphicBuckwheat = () => {
         <LineChart width={dimensions.width - 30} height={200} data={data}>
           <Line
             type="monotone"
-            dataKey="Ашан"
+            dataKey="priceForPack"
             stroke="#1D6EEF"
             strokeWidth={2}
           />
           <XAxis
-            dataKey="name"
+            dataKey="day"
             axisLine={false}
             tickLine={false}
             tick={<CustomizedAxisTick axis="x" />}

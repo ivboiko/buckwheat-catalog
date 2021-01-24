@@ -4,7 +4,7 @@ const CustomizedAxisTick = ({ x, y, payload, axis }) => {
   return (
     <g transform={`translate(${x},${y})`}>
       <text
-        x={axis === "x" ? 8 : 0}
+        x={axis === "x" ? 0: 0}
         y={axis === "x" ? 0 : 4}
         dy={axis === "x" ? 16 : 0}
         fontFamily="Inter-Bold, serif"

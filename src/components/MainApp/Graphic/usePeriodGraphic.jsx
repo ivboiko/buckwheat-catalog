@@ -6,6 +6,7 @@ export function usePeriodGraphic() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+
   const request = async (url) => {
     try {
       setLoading(false);
@@ -38,7 +39,7 @@ export function usePeriodGraphic() {
 
     const priceStart = getDataShop(firstDay, shop);
     const priceEnd = getDataShop(lastDay, shop);
-    const increase = 100 - (100 * priceEnd.priceForKg) / priceEnd.priceForKg;
+    const increase = 100 - (100 * priceEnd.priceForKg) / priceStart.priceForKg;
 
     return {
       priceStart,
@@ -47,9 +48,21 @@ export function usePeriodGraphic() {
     };
   };
 
-  const getDataGraphic = (price, shop) => {
+  const getZero = (number) => {
+    if (number < 10) {
+      return `0${number}`;
+    } else {
+      return `${number}`;
+    }
+  };
 
-  }
+  const getDataGraphic = (shop) => {
+    const newData = price.map((item, index) => {
+      const helper = getDataShop(item, shop);
+      return { ...helper, day: getZero(index+1) };
+    });
+    return newData;
+  };
 
   return {
     price,
@@ -57,5 +70,6 @@ export function usePeriodGraphic() {
     loading,
     error,
     increasePrise,
+    getDataGraphic,
   };
 }
