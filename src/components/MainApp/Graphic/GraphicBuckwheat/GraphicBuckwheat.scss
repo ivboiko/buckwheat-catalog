@@ -12,8 +12,10 @@
 }
 
 .graphic-filters {
+  height: 75px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   margin-right: 20px;
 }

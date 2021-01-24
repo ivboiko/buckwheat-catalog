@@ -1,7 +1,14 @@
-.picker-container {
-  height: 31px;
+.picker-light-container {
   background-color: #ffffff;
   border: 0.5px solid #979797;
+}
+
+.picker-dark-container {
+  background-color: rgba(228, 228, 228, 0.1);
+}
+
+.picker-container {
+  height: 31px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -10,6 +17,15 @@
 
   & :not(:last-child) {
     margin-right: 5px;
+  }
+
+  .picker-light-item {
+    background-color: #ffffff;
+    color: #696974;
+  }
+
+  .picker-dark-item {
+    color: #808191;
   }
 
   .picker-item {
@@ -24,8 +40,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    color: #696974;
   }
 
   .picker-item-chosen {

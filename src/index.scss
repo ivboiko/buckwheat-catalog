@@ -1,6 +1,27 @@
 body {
   margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+}
+
+.app-light-wrapper {
   background-color: #F2F2F2;
+}
+
+.app-dark-wrapper {
+  background-color: #1F2128;
+}
+
+.light-text {
+  color: #000000;
+}
+
+.dark-text {
+  color: #ffffff;
 }
 
 @font-face {

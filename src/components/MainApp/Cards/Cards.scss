@@ -1,5 +1,12 @@
-.container {
+.cards-light-container {
   background-color: #ffffff;
+}
+
+.cards-dark-container {
+  background-color: #242731;
+}
+
+.container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;

@@ -5,7 +5,7 @@ import "./GraphicBuckwheat.scss";
 import data from "./data.json";
 import DataPicker from '../../../common/DataPicker/DataPicker';
 
-const GraphicBuckwheat = () => {
+const GraphicBuckwheat = ({appTheme}) => {
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -60,7 +60,7 @@ const GraphicBuckwheat = () => {
   return (
     <>
       <div className="graphic-filters">
-        <DataPicker initialData={initialButtonsData} />
+        <DataPicker initialData={initialButtonsData} appTheme={appTheme} />
       </div>
       <div className="graphic__container">
         <LineChart width={dimensions.width - 30} height={200} data={data}>
