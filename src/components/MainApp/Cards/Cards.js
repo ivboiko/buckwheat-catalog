@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import "./Cards.scss";
-import novus from "../../../assets/imgs/NOVUS_logo.png";
 import Card from "./Card/Card";
 import DataPicker from "../../common/DataPicker/DataPicker";
-import constant from "../../../assets/imgs/constant.png";
-import increase from "../../../assets/imgs/increase.png";
-import reduction from "../../../assets/imgs/reduction.png";
 import PriceSort from "../../common/PriceSort/PriceSort";
 import AppDropdown from "../../common/Dropdown/Dropdown";
 import { useDataCard } from "./useDataCard";
@@ -15,7 +11,7 @@ const Cards = () => {
   const cards = useDataCard();
 
   useEffect(() => {
-    cards.request();
+    cards.request().catch((err) => console.log(err));
   }, []);
 
   const initialButtonsData = [
@@ -39,11 +35,6 @@ const Cards = () => {
         <Spinner />
       </div>
     );
-  }
-
-  if (cards.loading) {
-    console.log("cards", cards.cards);
-    console.log("dataCards", cards.dataCards);
   }
 
   return (
