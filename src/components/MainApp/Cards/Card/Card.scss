@@ -8,6 +8,14 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
+.link-light, .link-light:active, .link-light:hover, .link-light:visited {
+  color: #000000;
+}
+
+.link-dark, .link-dark:active, .link-dark:hover, .link-dark:visited {
+  color: #ffffff;
+}
+
 .card-container {
   width: 570px;
   min-height: 80px;

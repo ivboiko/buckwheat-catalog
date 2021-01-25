@@ -9,13 +9,17 @@ import './Dropdown.scss';
 import {theme} from '../../../redux/reducers/app-reducer';
 import classNames from 'classnames';
 
-const AppDropdown = ({appTheme, options, defaultOption}) => {
+const AppDropdown = ({appTheme, options, defaultOption, setPeriod}) => {
   const ArrowUp = () => {
     return <img src={appTheme === theme.light ? dropdown_blue_up : dropdown_white_up} alt="up arrow" className="dr-arrow" />
   };
 
   const ArrowDown = () => {
     return <img src={appTheme === theme.light ? dropdown_blue_down : dropdown_white_down} alt="up arrow" className="dr-arrow" />
+  };
+
+  const onDropdownValueChange = (selectedItem) => {
+    setPeriod(selectedItem.value);
   };
 
   const controlClassName = classNames(
@@ -38,13 +42,15 @@ const AppDropdown = ({appTheme, options, defaultOption}) => {
 
   return (
     <Dropdown
+      onChange={onDropdownValueChange}
       controlClassName={controlClassName}
       menuClassName={menuClassName}
       arrowOpen={<ArrowUp />}
       arrowClosed={<ArrowDown />}
       arrowClassName="arrow-dropdown"
       options={options}
-      value={defaultOption} />
+      value={defaultOption}
+    />
   );
 };
 

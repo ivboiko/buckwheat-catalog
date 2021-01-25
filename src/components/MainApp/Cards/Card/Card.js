@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {theme} from '../../../../redux/reducers/app-reducer';
 import {getTextClassName} from '../../../../utils/getTextClassName';
 
-const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice, increase, procent, appTheme}) => {
+const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice, increase, procent, appTheme, productLink}) => {
   const cardContainerClassName = classNames(
     "card-container",
     {
@@ -14,6 +14,11 @@ const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice
       "card-dark-container": appTheme === theme.dark,
     }
   );
+
+  const linkClassName = classNames({
+    "link-light": appTheme === theme.light,
+    "link-dark": appTheme === theme.dark,
+  });
 
   return (
     <div className={cardContainerClassName}>
@@ -28,7 +33,7 @@ const Card = ({number, logoSrc, storeName, productName, weight, price, bestPrice
           {storeName}
         </div>
         <div className={getTextClassName("product-name", appTheme)}>
-          {productName}
+          <a className={linkClassName} href={productLink}>{productName}</a>
         </div>
         <div className="weight">
           {weight}

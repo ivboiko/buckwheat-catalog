@@ -21,12 +21,18 @@ const logo = {
   citymarket,
 };
 
+export const periodConst = {
+  week: 'week',
+  month: 'month',
+  year: 'year',
+};
+
 export function useDataCard() {
   const [dataCardsFromDb, setDataCardsFromDb] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [cards, setCards] = useState([]);
-  const [period, setPeriod] = useState("month");
+  const [period, setPeriod] = useState(periodConst.week);
 
   useEffect(() => {
     const s = bestShop(dataCardsFromDb);
@@ -39,7 +45,6 @@ export function useDataCard() {
       const end = data[index].priceForPack;
 
       const procent = ((end - start) / start) * 100;
-
       data[index].procent = Math.round(procent);
       if (procent < 0) {
         data[index].increase = reduction;
@@ -66,11 +71,11 @@ export function useDataCard() {
       return { ...item };
     });
 
-    if (period === "week") {
+    if (period === periodConst.week) {
       data = filterPeriod(data, 1, dataCards);
-    } else if (period === "month") {
+    } else if (period === periodConst.month) {
       data = filterPeriod(data, 2, dataCards);
-    } else if (period === "year") {
+    } else if (period === periodConst.year) {
       data = filterPeriod(data, 3, dataCards);
     } else return null;
 
