@@ -16,7 +16,7 @@ const initialState = {
   priceAscending: true,
   appTheme: theme.light,
   price: [],
-  shop: "varus",
+  shop: null,
   priceFor: priceValue.kg,
 };
 

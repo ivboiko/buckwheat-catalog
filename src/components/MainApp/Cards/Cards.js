@@ -88,13 +88,13 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
           .map((item, index) => {
           return (
             <Card
-              key={index.toString()}
+              key={item._id}
               number={index + 1}
               logoSrc={item.logoSrc}
               storeName={item.shop}
               productName={item.name}
-              weight={priceFor === priceValue.pack ? item.weight : '1 кг'}
-              price={priceFor === priceValue.pack ? item.priceForPack : getFixedNumber(item.priceForKg, 2)}
+              weight={`${item.weight}`}
+              price={item.priceForPack}
               increase={item.increase}
               procent={item.procent}
               bestPrice={item.bestPrice}

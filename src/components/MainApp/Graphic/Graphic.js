@@ -12,7 +12,7 @@ import GraphicPlug from './GraphicPlug/GraphicPlug';
 const Graphic = ({appTheme}) => {
   const [bestPrise, setBestPrise] = useState(null);
   const [dataGraphic, setDataGraphic] = useState([]);
-  const [period, setPeriod] = useState('week');
+  const [period, setPeriod] = useState('month');
 
   const year = usePeriodGraphic();
   const month = usePeriodGraphic();
@@ -60,7 +60,7 @@ const Graphic = ({appTheme}) => {
         <Spinner/>
       ) : (
         <>
-          <GraphicBuckwheat data={dataGraphic} onSetPeriod={setPeriod} appTheme={appTheme}/>
+          <GraphicBuckwheat data={dataGraphic} onSetPeriod={setPeriod} appTheme={appTheme} period={period}/>
           <DataBuckwheat {...bestPrise} appTheme={appTheme}/>
         </>
       )}

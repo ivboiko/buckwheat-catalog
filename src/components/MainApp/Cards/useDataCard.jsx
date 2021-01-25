@@ -8,7 +8,7 @@ import auchan from "../../../assets/imgs/АШАН_logo.png";
 import megamarket from "../../../assets/imgs/МЕГАМАРКЕТ_logo.png";
 import varus from "../../../assets/imgs/VARUS_logo.png";
 import furshet from "../../../assets/imgs/ФУРШЕТ_logo.png";
-import eko from "../../../assets/imgs/EKO_logo.png";
+import ekomarket from "../../../assets/imgs/EKO_logo.png";
 import citymarket from "../../../assets/imgs/CITY_MARKET_logo.png";
 
 const logo = {
@@ -17,7 +17,7 @@ const logo = {
   megamarket,
   varus,
   furshet,
-  eko,
+  ekomarket,
   citymarket,
 };
 
@@ -41,8 +41,8 @@ export function useDataCard() {
 
   const filterPeriod = (data, filterIndex, dataCards) => {
     dataCards[filterIndex].goods.forEach((item, index) => {
-      const start = item.priceForKg;
-      const end = data[index].priceForKg;
+      const start = item.priceForPack;
+      const end = data[index].priceForPack;
 
       const procent = ((end - start) / start) * 100;
       data[index].procent = Math.round(procent);

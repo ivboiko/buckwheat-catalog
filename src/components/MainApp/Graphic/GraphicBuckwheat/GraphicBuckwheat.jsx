@@ -4,7 +4,7 @@ import CustomizedAxisTick from "./CustomizedAxisTick";
 import "./GraphicBuckwheat.scss";
 import DataPicker from "../../../common/DataPicker/DataPicker";
 
-const GraphicBuckwheat = ({data, onSetPeriod, appTheme}) => {
+const GraphicBuckwheat = ({ data, onSetPeriod, appTheme, period }) => {
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -40,21 +40,76 @@ const GraphicBuckwheat = ({data, onSetPeriod, appTheme}) => {
       id: 1,
       value: "Тиждень",
       isActive: false,
-      onClickHandler: () => onSetPeriod('week'),
+      onClickHandler: () => onSetPeriod("week"),
     },
     {
       id: 2,
       value: "Місяць",
       isActive: true,
-      onClickHandler: () => onSetPeriod('month'),
+      onClickHandler: () => onSetPeriod("month"),
     },
     {
       id: 3,
       value: "Рік",
       isActive: false,
-      onClickHandler: () => onSetPeriod('year'),
+      onClickHandler: () => onSetPeriod("year"),
     },
   ];
+
+  const minPrice = (label) => {
+    const newDate = data.filter((item) => item.day === label);
+    return newDate[0].priceForPack;
+  };
+
+  const tooltipName = (label) => {
+    const dateGraphic = {
+      year: {
+        "01": "Січень",
+        "02": "Лютий",
+        "03": "Березень",
+        "04": "Квітень",
+        "05": "Травень",
+        "06": "Червень",
+        "07": "Липень",
+        "08": "Серпень",
+        "09": "Вересень",
+        "10": "Жовтень",
+        "11": "Листопад",
+        "12": "Грудень",
+        "now": "Зараз",
+      },
+      week: {
+        "01": "Понеділок",
+        "02": "Вівторок",
+        "03": "Середа",
+        "04": "Четвер",
+        "05": "Пятниця",
+        "06": "Субота",
+        "07": "Неділя",
+        "now": "Зараз",
+      },
+    };
+
+    if (period === "week") {
+      return dateGraphic.week[`${label}`];
+    } else if (period === "year") {
+      return dateGraphic.year[`${label}`];
+    } else return label;
+  };
+
+  const CustomTooltip = ({ active, label }) => {
+
+    if (active) {
+      return (
+        <div className="DateBox">
+          <p className="MounthStyle">{tooltipName(label)}</p>
+          <p className="MounthStyle">{`Ціна : ${minPrice(label)}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <>
@@ -80,7 +135,7 @@ const GraphicBuckwheat = ({data, onSetPeriod, appTheme}) => {
             tickLine={false}
             tick={<CustomizedAxisTick axis="y" />}
           />
-          <Tooltip cursor={false} />
+          <Tooltip cursor={false} content={<CustomTooltip />} />
         </LineChart>
       </div>
     </>

@@ -9,8 +9,8 @@
 .DataBlock {
   margin-top: 45px;
   margin-left: 50px;
+  margin-right: 20px;
   height: 180px;
-  width: 410px;
 }
 
 .NameBrand {
@@ -38,7 +38,19 @@
   font-family: 'Inter-Bold', serif;
   font-size: 16px;
   font-weight: 500;
+
+}
+
+.percent-down {
   color: #1D6EEF;
+}
+
+.percent-up {
+  color: #EB2929;
+}
+
+.parcent-zero {
+  color: #7A7A7A
 }
 
 .GoodsNumbers {
