@@ -50,7 +50,7 @@ const parseCard = async (card, shop, url) => {
     link,
     shop,
     name: card.find(".product-tile__title").text(),
-    weight,
+    weight: card.find(".product-tile__weight").text(),
     brand, 
   };
 
