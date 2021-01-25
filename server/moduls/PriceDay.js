@@ -1,14 +1,14 @@
 const {Schema, model} = require("mongoose");
 
 const schema = new Schema({
-    day: {type: Date, unique: true},
+    day: {type: Date},
     goods: [{
         priceForPack: {type: Number},
         priceForKg: {type: Number},
         link: {type: String},
         shop: {type: String},
         name: {type: String},
-        weight: {type: Number},
+        weight: {type: String},
         brand: {type: String}
     }],
 

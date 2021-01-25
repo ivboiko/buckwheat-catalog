@@ -10,7 +10,6 @@ module.exports = async () => {
     today.setHours(0, 0, 0, 0);
 
     const result = await PriceDay.findOne({ day: today });
-    console.log(result);
 
     if (!result) {
       console.log("false");
