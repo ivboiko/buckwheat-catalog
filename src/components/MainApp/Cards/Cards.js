@@ -77,11 +77,12 @@ const Cards = ({ appTheme }) => {
         {cards.cards.map((item, index) => {
           return (
             <Card
-              number={index}
+              key={item._id}
+              number={index+1}
               logoSrc={item.logoSrc}
               storeName={item.shop}
               productName={item.name}
-              weight={`${item.weight} г`}
+              weight={`${item.weight}`}
               price={item.priceForPack}
               increase={item.increase}
               procent={item.procent}

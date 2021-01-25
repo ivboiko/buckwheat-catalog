@@ -13,7 +13,7 @@ router.get("/filldb", async (req, res) => {
   let now = +req.params.period;
   let date = new Date();
   date.setHours(0, 0, 0, 0);
-  await PriceDay.deleteMany({})
+  await PriceDay.deleteMany({});
   for (let i = 2; i <= 26; i++) {
     const changNovus = randomInteger(-5, 5);
     const changAuchan = randomInteger(-5, 5);
@@ -23,15 +23,13 @@ router.get("/filldb", async (req, res) => {
     const changEkomarket = randomInteger(-5, 5);
     const changCitymarket = randomInteger(-5, 5);
 
-
-
     date.setDate(i);
     await new PriceDay({
       day: date,
       goods: [
         {
           priceForPack: 24.09 + changNovus,
-          priceForKg: 60.23 + changNovus,
+          priceForKg: 60.23 + changNovus*(24.09 + changNovus)/24.09,
           link:
             "https://novus.zakaz.ua/uk/products/04820009102798/krupa-grechka-novus-400g/",
           shop: "novus",
@@ -40,8 +38,8 @@ router.get("/filldb", async (req, res) => {
           brand: "Novus",
         },
         {
-          priceForPack: 8.49+changAuchan,
-          priceForKg: 40.05+changAuchan,
+          priceForPack: 8.49 + changAuchan,
+          priceForKg: 40.05 + changAuchan*(8.49 + changAuchan)/8.49,
           link:
             "https://auchan.zakaz.ua/uk/products/04820168883408/krupa-sto-pudov-212g/",
           shop: "auchan",
@@ -50,8 +48,8 @@ router.get("/filldb", async (req, res) => {
           brand: "сто пудов",
         },
         {
-          priceForPack: 39.6+changMegamarket,
-          priceForKg: 99+changMegamarket,
+          priceForPack: 39.6 + changMegamarket,
+          priceForKg: 99 + changMegamarket*(39.6 + changMegamarket)/39.6,
           link:
             "https://megamarket.zakaz.ua/uk/products/04820186600117/krupa-grechka-kulinaro-400g/",
           shop: "megamarket",
@@ -61,7 +59,7 @@ router.get("/filldb", async (req, res) => {
         },
         {
           priceForPack: 28.9 + changVarus,
-          priceForKg: 72.25 + changVarus,
+          priceForKg: 72.25 + changVarus*(28.9 + changVarus)/28.9,
           link:
             "https://varus.zakaz.ua/uk/products/varus02053841900006/krupa-grechka-varto-400g/",
           shop: "varus",
@@ -71,7 +69,7 @@ router.get("/filldb", async (req, res) => {
         },
         {
           priceForPack: 24.2 + changFurshet,
-          priceForKg: 48.4 + changFurshet,
+          priceForKg: 48.4 + changFurshet*(24.2 + changFurshet)/24.2,
           link:
             "https://furshet.zakaz.ua/uk/products/04820141040026/krupa-grechka-furshet-500g-ukrayina/",
           shop: "furshet",
@@ -81,7 +79,7 @@ router.get("/filldb", async (req, res) => {
         },
         {
           priceForPack: 30.09 + changEkomarket,
-          priceForKg: 75.22 + changEkomarket,
+          priceForKg: 75.22 + changEkomarket*(30.09 + changEkomarket)/30.09,
           link:
             "https://eko.zakaz.ua/uk/products/04820101711065/krupa-grechka-khutorok-panskii-400g-ukrayina/",
           shop: "ekomarket",
@@ -92,7 +90,7 @@ router.get("/filldb", async (req, res) => {
         },
         {
           priceForPack: 41.9 + changCitymarket,
-          priceForKg: 41.9 + changCitymarket,
+          priceForKg: 41.9 + changCitymarket*(41.9 + changCitymarket)/41.9,
           link:
             "https://citymarket.zakaz.ua/uk/products/04820160760325/krupa-grechka-sarkara-produkt-1000g/",
           shop: "citymarket",
@@ -139,7 +137,6 @@ router.get("/ymwd", async (req, res) => {
   //day
   date.setHours(0, 0, 0, 0);
   const now = await ymwd(date, "now");
-  console.log(now);
   data.push(now);
 
   // week
@@ -148,11 +145,12 @@ router.get("/ymwd", async (req, res) => {
   data.push(week);
 
   // month
-  date.setDate(1);
+  date.setDate(2);
   const month = await ymwd(date, "month");
   data.push(month);
 
   // year
+  // date.setDate(2);
   date.setMonth(0);
   const year = await ymwd(date, "year");
   data.push(year);
