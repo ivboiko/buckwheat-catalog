@@ -4,7 +4,7 @@ import Card from './Card/Card';
 import DataPicker from '../../common/DataPicker/DataPicker';
 import PriceSort from '../../common/PriceSort/PriceSort';
 import AppDropdown from '../../common/Dropdown/Dropdown';
-import {useDataCard} from './useDataCard';
+import {periodConst, useDataCard} from './useDataCard';
 import Spinner from '../../common/Spinner';
 import classNames from 'classnames';
 import {priceValue, theme, togglePriceFor} from '../../../redux/reducers/app-reducer';
@@ -14,8 +14,10 @@ import {getFixedNumber} from '../../../utils/getFixedNumber';
 
 const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
   const cards = useDataCard();
+
   useEffect(() => {
     cards.request().catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const cardsContainerClassName = classNames('container app-child', {
@@ -48,18 +50,19 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
 
   const dropdownOptions = [
     {
-      value: 'Тиждень',
+      value: periodConst.week,
       label: 'Тиждень',
     },
     {
-      value: 'Місяць',
+      value: periodConst.month,
       label: 'Місяць',
     },
     {
-      value: 'Рік',
+      value: periodConst.year,
       label: 'Рік',
     },
   ];
+
 
   return (
     <div className={cardsContainerClassName}>
@@ -72,6 +75,7 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
             priceAscending={priceAscending}
             appTheme={appTheme}/>
           <AppDropdown
+            setPeriod={cards.setPeriod}
             appTheme={appTheme}
             options={dropdownOptions}
             defaultOption={dropdownOptions[0]}

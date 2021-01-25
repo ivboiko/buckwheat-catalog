@@ -26,7 +26,7 @@ const GraphicPlug = ({appTheme}) => {
 
   return (
     <div className={plugClassName}>
-      <img src={plugSrc} alt="plug image" />
+      <img src={plugSrc} alt="plug" />
       <div className={plugTextClassName}>
         Оберіть магазин зі списку
         для докладнішої аналітики
