@@ -5,6 +5,7 @@ import "./GraphicBuckwheat.scss";
 import DataPicker from "../../../common/DataPicker/DataPicker";
 
 const GraphicBuckwheat = ({ data, onSetPeriod, appTheme, period }) => {
+
   const targetRef = useRef();
   const [isGraphicReady, setIsGraphicReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
@@ -110,6 +111,7 @@ const GraphicBuckwheat = ({ data, onSetPeriod, appTheme, period }) => {
 
     return null;
   };
+
 
   return (
     <>

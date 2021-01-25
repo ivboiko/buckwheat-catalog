@@ -17,7 +17,7 @@ const initialState = {
   appTheme: theme.light,
   price: [],
   priceMainPeriod: "week",
-  shop: null,
+  shop: "varus",
   priceFor: priceValue.kg,
 };
 

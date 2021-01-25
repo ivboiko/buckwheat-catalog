@@ -54,6 +54,11 @@ const Graphic = ({appTheme}) => {
       'graphic-dark': appTheme === theme.dark,
     },
   );
+
+  // if (!shopName) {
+  //   return (<GraphicPlug appTheme={appTheme} />);
+  // }
+
   return (
     <div className={graphicClassName}>
       {!year.loading || !month.loading || !week.loading ? (
@@ -65,8 +70,7 @@ const Graphic = ({appTheme}) => {
         </>
       )}
     </div>
-    // Graphic plug for test
-    // <GraphicPlug appTheme={appTheme} />
+
   );
 };
 
