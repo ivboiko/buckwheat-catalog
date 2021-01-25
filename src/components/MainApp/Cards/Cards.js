@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import {priceValue, theme, togglePriceFor} from '../../../redux/reducers/app-reducer';
 import {sortByPrice} from '../../../utils/sort';
 import {connect} from 'react-redux';
+import {getFixedNumber} from '../../../utils/getFixedNumber';
 
 const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
   const cards = useDataCard();
@@ -89,7 +90,7 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
               storeName={item.shop}
               productName={item.name}
               weight={priceFor === priceValue.pack ? item.weight : '1 кг'}
-              price={priceFor === priceValue.pack ? item.priceForPack : Number(item.priceForKg).toFixed(2)}
+              price={priceFor === priceValue.pack ? item.priceForPack : getFixedNumber(item.priceForKg, 2)}
               increase={item.increase}
               procent={item.procent}
               bestPrice={item.bestPrice}

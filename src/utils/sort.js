@@ -1,8 +1,8 @@
-export const sortByPrice = (isAscending, sortBuy) => (item1, item2) => {
-  const price1 = Number(item1[sortBuy].toFixed(2));
-  const price2 = Number(item2[sortBuy].toFixed(2));
+import {getFixedNumber} from './getFixedNumber';
 
-  // debugger
+export const sortByPrice = (isAscending, sortBuy) => (item1, item2) => {
+  const price1 = getFixedNumber(item1[sortBuy], 2);
+  const price2 = getFixedNumber(item2[sortBuy], 2);
 
   if (price1 === price2) {
     return 0;
