@@ -1,13 +1,12 @@
 import React from 'react';
 import './PriceSort.scss';
-import {connect} from 'react-redux';
-import {togglePriceIsAscending} from '../../../redux/reducers/app-reducer';
+import {theme, togglePriceIsAscending} from '../../../redux/reducers/app-reducer';
 import blueArrowUp from '../../../assets/imgs/arrow_up.svg';
 import blueArrowDown from '../../../assets/imgs/arrow_down.svg';
 import whiteArrowDown from '../../../assets/imgs/arrow_white_down.svg';
 import whiteArrowUp from '../../../assets/imgs/arrow_white_up.svg';
 import classNames from 'classnames';
-import {theme} from '../../../redux/reducers/app-reducer';
+import {connect} from 'react-redux';
 
 const PriceSort = ({priceAscending, togglePriceIsAscending, appTheme}) => {
   const onPriceSortButtonClick = () => {
@@ -46,10 +45,4 @@ const PriceSort = ({priceAscending, togglePriceIsAscending, appTheme}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  priceAscending: state.priceAscending,
-});
-
-export default connect(mapStateToProps, {
-  togglePriceIsAscending,
-})(PriceSort);
+export default connect(null, {togglePriceIsAscending})(PriceSort);
