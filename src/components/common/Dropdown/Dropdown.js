@@ -19,7 +19,6 @@ const AppDropdown = ({appTheme, options, defaultOption, setPeriod}) => {
   };
 
   const onDropdownValueChange = (selectedItem) => {
-
     setPeriod(selectedItem.value);
   };
 
@@ -50,7 +49,8 @@ const AppDropdown = ({appTheme, options, defaultOption, setPeriod}) => {
       arrowClosed={<ArrowDown />}
       arrowClassName="arrow-dropdown"
       options={options}
-      value={defaultOption} />
+      value={defaultOption}
+    />
   );
 };
 

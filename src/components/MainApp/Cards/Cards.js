@@ -63,7 +63,6 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
     },
   ];
 
-
   return (
     <div className={cardsContainerClassName}>
       <div className="card-filters">
@@ -78,7 +77,7 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
             setPeriod={cards.setPeriod}
             appTheme={appTheme}
             options={dropdownOptions}
-            defaultOption={dropdownOptions[0]}
+            defaultOption={cards.period}
           />
         </div>
       </div>
@@ -93,7 +92,7 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
               logoSrc={item.logoSrc}
               storeName={item.shop}
               productName={item.name}
-              weight={`${item.weight}`}
+              weight={priceFor === priceValue.pack ? item.weight : '1 кг'}
               price={item.priceForPack}
               increase={item.increase}
               procent={item.procent}
