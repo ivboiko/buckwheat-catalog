@@ -1,60 +1,63 @@
-import React, { useEffect } from "react";
-import "./Cards.scss";
-import Card from "./Card/Card";
-import DataPicker from "../../common/DataPicker/DataPicker";
-import PriceSort from "../../common/PriceSort/PriceSort";
-import AppDropdown from "../../common/Dropdown/Dropdown";
-import { useDataCard } from "./useDataCard";
-import Spinner from "../../common/Spinner";
-import classNames from "classnames";
-import { theme } from "../../../redux/reducers/app-reducer";
+import React, {useEffect} from 'react';
+import './Cards.scss';
+import Card from './Card/Card';
+import DataPicker from '../../common/DataPicker/DataPicker';
+import PriceSort from '../../common/PriceSort/PriceSort';
+import AppDropdown from '../../common/Dropdown/Dropdown';
+import {useDataCard} from './useDataCard';
+import Spinner from '../../common/Spinner';
+import classNames from 'classnames';
+import {priceValue, theme, togglePriceFor} from '../../../redux/reducers/app-reducer';
+import {sortByPrice} from '../../../utils/sort';
+import {connect} from 'react-redux';
+import {getFixedNumber} from '../../../utils/getFixedNumber';
 
-const Cards = ({ appTheme }) => {
+const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
   const cards = useDataCard();
   useEffect(() => {
     cards.request().catch((err) => console.log(err));
   }, []);
 
-  const cardsContainerClassName = classNames("container app-child", {
-    "cards-light-container": appTheme === theme.light,
-    "cards-dark-container": appTheme === theme.dark,
+  const cardsContainerClassName = classNames('container app-child', {
+    'cards-light-container': appTheme === theme.light,
+    'cards-dark-container': appTheme === theme.dark,
   });
 
   const initialButtonsData = [
     {
       id: 1,
-      value: "За 1 кілограм",
+      value: 'За 1 кілограм',
       isActive: true,
-      onClickHandler: () => console.log("За 1 кілограм"),
+      onClickHandler: () => togglePriceFor(priceValue.kg),
     },
     {
       id: 2,
-      value: "За упаковку",
+      value: 'За упаковку',
       isActive: false,
-      onClickHandler: () => console.log("За упаковку"),
+      onClickHandler: () => togglePriceFor(priceValue.pack),
     },
   ];
 
   if (!cards.loading) {
     return (
       <div className="container app-child">
-        <Spinner />
+        <Spinner/>
       </div>
     );
   }
 
   const dropdownOptions = [
     {
-      value: "Тиждень",
-      label: "Тиждень",
+      value: 'Тиждень',
+      label: 'Тиждень',
     },
     {
-      value: "Місяць",
-      label: "Місяць",
+      value: 'Місяць',
+      label: 'Місяць',
     },
     {
-      value: "Рік",
-      label: "Рік",
+      value: 'Рік',
+      label: 'Рік',
     },
   ];
 
@@ -62,10 +65,12 @@ const Cards = ({ appTheme }) => {
     <div className={cardsContainerClassName}>
       <div className="card-filters">
         <div className="cards-filters-picker">
-          <DataPicker initialData={initialButtonsData} appTheme={appTheme} />
+          <DataPicker initialData={initialButtonsData} appTheme={appTheme}/>
         </div>
         <div className="cards-sort-container">
-          <PriceSort appTheme={appTheme} />
+          <PriceSort
+            priceAscending={priceAscending}
+            appTheme={appTheme}/>
           <AppDropdown
             appTheme={appTheme}
             options={dropdownOptions}
@@ -74,11 +79,13 @@ const Cards = ({ appTheme }) => {
         </div>
       </div>
       <div className="cards-container">
-        {cards.cards.map((item, index) => {
+        {cards.cards
+          .sort(sortByPrice(priceAscending, priceFor === priceValue.pack ? 'priceForPack' : 'priceForKg'))
+          .map((item, index) => {
           return (
             <Card
               key={item._id}
-              number={index+1}
+              number={index + 1}
               logoSrc={item.logoSrc}
               storeName={item.shop}
               productName={item.name}
@@ -96,4 +103,11 @@ const Cards = ({ appTheme }) => {
   );
 };
 
-export default Cards;
+const mapStateToProps = (state) => ({
+  priceAscending: state.priceAscending,
+  priceFor: state.priceFor,
+});
+
+export default connect(mapStateToProps, {
+  togglePriceFor,
+})(Cards);
