@@ -88,7 +88,7 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
               logoSrc={item.logoSrc}
               storeName={item.shop}
               productName={item.name}
-              weight={`${item.weight} г`}
+              weight={priceFor === priceValue.pack ? item.weight : '1 кг'}
               price={priceFor === priceValue.pack ? item.priceForPack : Number(item.priceForKg).toFixed(2)}
               increase={item.increase}
               procent={item.procent}
