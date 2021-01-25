@@ -93,11 +93,12 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
               storeName={item.shop}
               productName={item.name}
               weight={priceFor === priceValue.pack ? item.weight : '1 кг'}
-              price={item.priceForPack}
+              price={priceFor === priceValue.pack ? item.priceForPack : getFixedNumber(item.priceForKg, 2)}
               increase={item.increase}
               procent={item.procent}
               bestPrice={item.bestPrice}
               appTheme={appTheme}
+              productLink={item.link}
             />
           );
         })}
