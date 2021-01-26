@@ -4,10 +4,9 @@ const router = express.Router();
 const PriceDay = require("../moduls/PriceDay");
 
 const convector = (data) => {
-  const newData = data.map((item) => {
+  return data.map((item) => {
     return item.goods;
   });
-  return newData;
 };
 
 const formatDate = (date) => {
@@ -32,7 +31,7 @@ router.get("/:period", async (req, res) => {
 
     switch (req.params.period) {
       case "week":
-        let decrement = date.getDay() != 0 ? date.getDay() + 1 : 6;
+        let decrement = date.getDay() !== 0 ? date.getDay() + 1 : 6;
         date.setDate(date.getDate() - decrement + 2);
         startDate = formatDate(date);
         break;
