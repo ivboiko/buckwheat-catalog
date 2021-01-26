@@ -52,7 +52,6 @@ const parseCard = async (card, shop, url) => {
     brand, 
   };
 
-  
 };
 
 

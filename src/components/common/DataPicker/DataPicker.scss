@@ -47,3 +47,17 @@
     color: #ffffff;
   }
 }
+
+@media (max-width: 505px) {
+  .picker-container {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 370px) {
+
+
+  .picker-container .picker-item {
+    min-width: 76px;
+  }
+}

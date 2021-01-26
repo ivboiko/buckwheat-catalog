@@ -19,3 +19,13 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .main-app-container {
+    padding-inline: 8px;
+  }
+
+  .main-app-container .app-child {
+    margin-right: 0;
+  }
+}

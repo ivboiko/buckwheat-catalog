@@ -15,7 +15,7 @@ const DataBuckwheat = ({ priceEnd = "", increase = 0, appTheme }) => {
     } else if (increase > 0) {
       return (
         <div className="percent percent-up">
-          {increase}%<img className="arrow" src={arrowUp} alt="arrow down" />
+          {increase}%<img className="arrow" src={arrowUp} alt="arrow up" />
         </div>
       );
     } else {
@@ -40,9 +40,6 @@ const DataBuckwheat = ({ priceEnd = "", increase = 0, appTheme }) => {
           ₴{priceEnd.priceForPack}
         </div>
         {percent()}
-        {/*<div className="percent">*/}
-        {/*  {increase}%<img className="arrow" src={arrowDown} alt="arrow down" />*/}
-        {/*</div>*/}
       </div>
     </div>
   );
