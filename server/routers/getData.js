@@ -141,7 +141,7 @@ router.get("/ymwd", async (req, res) => {
   data.push(now);
 
   // week
-  date.setDate(date.getDate() - date.getDay() + 1);
+  date.setDate(date.getDate() - date.getDay() + 2);
   const week = await ymwd(date, "week");
   data.push(week);
 
