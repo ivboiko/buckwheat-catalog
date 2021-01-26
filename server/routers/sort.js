@@ -42,13 +42,13 @@ router.get("/:period", async (req, res) => {
         break;
 
       case "year":
-        date.setHours(0, 0, 0, 0);
+        date.setHours(2, 0, 0, 0);
         let months = [date];
 
         for (let i = 0; i < 12; i++) {
           let month = new Date();
           month.setDate(2);
-          month.setHours(0, 0, 0, 0);
+          month.setHours(2, 0, 0, 0);
           month.setMonth(i);
           months.push(month);
         }

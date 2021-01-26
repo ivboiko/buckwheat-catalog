@@ -37,7 +37,7 @@ const DataBuckwheat = ({ priceEnd = "", increase = 0, appTheme }) => {
       </div>
       <div className="GoodsNumbers">
         <div className={getTextClassName("DataPrice", appTheme)}>
-          ₴{priceEnd.priceForPack}
+          ₴{priceEnd.priceForPack} <span className="graphic-price-value">(за пачку)</span>
         </div>
         {percent()}
       </div>

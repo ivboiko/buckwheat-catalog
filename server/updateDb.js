@@ -7,7 +7,7 @@ module.exports = async () => {
     const response = await axios.get(config.parserUri);
     let today = new Date();
     today.setDate(today.getDate() + 1);
-    today.setHours(0, 0, 0, 0);
+    today.setHours(2, 0, 0, 0);
 
     const result = await PriceDay.findOne({ day: today });
 
