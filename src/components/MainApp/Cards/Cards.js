@@ -42,8 +42,8 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
 
   if (!cards.loading) {
     return (
-      <div className="container app-child">
-        <Spinner/>
+       <div className={cardsContainerClassName}>
+         <Spinner/>
       </div>
     );
   }

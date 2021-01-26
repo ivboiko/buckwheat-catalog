@@ -1,15 +1,16 @@
-const TOGGLE_PRICE_IS_ASCENDING = 'TOGGLE_PRICE_IS_ASCENDING';
-const TOGGLE_THEME = 'TOGGLE_THEME';
-const TOGGLE_PRICE_FOR = 'TOGGLE_PRICE_FOR';
+const TOGGLE_PRICE_IS_ASCENDING = "TOGGLE_PRICE_IS_ASCENDING";
+const TOGGLE_THEME = "TOGGLE_THEME";
+const TOGGLE_PRICE_FOR = "TOGGLE_PRICE_FOR";
+const SET_SHOP = "SET_SHOP";
 
 export const theme = {
-  dark: 'dark',
-  light: 'light',
+  dark: "dark",
+  light: "light",
 };
 
 export const priceValue = {
-  kg: 'kg',
-  pack: 'pack',
+  kg: "kg",
+  pack: "pack",
 };
 
 const initialState = {
@@ -33,19 +34,24 @@ export const appReducer = (state = initialState, action) => {
         appTheme: action.newTheme,
       };
     case TOGGLE_PRICE_FOR:
-      console.log(action.priceFor)
       return {
         ...state,
         priceFor: action.priceFor,
       };
+    case SET_SHOP:
+      return {
+        ...state,
+        shop: action.payload,
+      };
+
     default:
       return state;
   }
 };
 
 export const togglePriceIsAscending = (isAscending) => ({
-    type: TOGGLE_PRICE_IS_ASCENDING,
-    isAscending,
+  type: TOGGLE_PRICE_IS_ASCENDING,
+  isAscending,
 });
 
 export const togglePriceFor = (priceFor) => ({
@@ -56,4 +62,9 @@ export const togglePriceFor = (priceFor) => ({
 export const toggleTheme = (newTheme) => ({
   type: TOGGLE_THEME,
   newTheme,
+});
+
+export const setShop = (newShop) => ({
+  type: SET_SHOP,
+  payload: newShop,
 });

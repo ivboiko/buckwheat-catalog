@@ -55,9 +55,9 @@ const Graphic = ({appTheme}) => {
     },
   );
 
-  // if (!shopName) {
-  //   return (<GraphicPlug appTheme={appTheme} />);
-  // }
+  if (!shopName) {
+    return (<GraphicPlug appTheme={appTheme} />);
+  }
 
   return (
     <div className={graphicClassName}>
