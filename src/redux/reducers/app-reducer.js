@@ -14,7 +14,7 @@ export const priceValue = {
 
 const initialState = {
   priceAscending: true,
-  appTheme: theme.light,
+  appTheme: null,
   price: [],
   shop: null,
   priceFor: priceValue.kg,
@@ -57,3 +57,19 @@ export const toggleTheme = (newTheme) => ({
   type: TOGGLE_THEME,
   newTheme,
 });
+
+export const getThemeFromStorage = () => {
+  return localStorage.getItem('theme');
+}
+
+// export const setThemeInStorage = () => (dispatch) => {
+//   let themeFromStorage = getThemeFromStorage();
+//   let newTheme = theme.light;
+//
+//   if (themeFromStorage) {
+//     newTheme = themeFromStorage === theme.light ? theme.dark : theme.light;
+//   }
+//
+//   localStorage.setItem('theme', newTheme);
+//   dispatch(toggleTheme(newTheme));
+// };

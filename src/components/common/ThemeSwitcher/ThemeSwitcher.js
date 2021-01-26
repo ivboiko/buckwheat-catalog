@@ -1,12 +1,12 @@
 import React from 'react';
 import './ThemeSwitcher.scss';
-import {connect} from 'react-redux';
-import {theme, toggleTheme} from '../../../redux/reducers/app-reducer';
+import {useTheme} from '../CustomHooks/useTheme';
 
-const ThemeSwitcher = ({appTheme, toggleTheme}) => {
+const ThemeSwitcher = () => {
+  const setTheme = useTheme();
+
   const changeTheme = () => {
-    const newTheme = appTheme === theme.light ? theme.dark : theme.light;
-    toggleTheme(newTheme);
+    setTheme();
   };
 
   return (
@@ -19,10 +19,5 @@ const ThemeSwitcher = ({appTheme, toggleTheme}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  appTheme: state.appTheme,
-});
 
-export default connect(mapStateToProps, {
-  toggleTheme,
-})(ThemeSwitcher);
+export default ThemeSwitcher;
