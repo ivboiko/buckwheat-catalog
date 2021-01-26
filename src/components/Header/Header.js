@@ -18,7 +18,7 @@ const Header = ({appTheme}) => {
       <span className={logoClassName}>
         GRECHA•
       </span>
-      <ThemeSwitcher />
+      <ThemeSwitcher appTheme={appTheme} />
     </div>
   );
 };
