@@ -15,16 +15,16 @@ Plotting price change charts allows you to visualize data.
 
 ## Run project
 
-### `yarn start` or `npm run start`
+### `yarn dev` or `npm run dev`
 
-Runs the whole app in the production mode.
-Open [http://localhost:8080](http://localhost:8080) to test it in the browser.
+Runs the whole app.
+Open [http://localhost:3000](http://localhost:3000) to test it in the browser.
 
 
 ## Other Scripts
 
-### `yarn dev` or `npm run start` 
-Runs the whole app in the development mode.
+### `yarn start` or `npm run start` Only for production. 
+Runs the whole app with access to db.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
