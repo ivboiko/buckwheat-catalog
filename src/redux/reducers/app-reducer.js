@@ -1,6 +1,7 @@
 const TOGGLE_PRICE_IS_ASCENDING = 'TOGGLE_PRICE_IS_ASCENDING';
 const TOGGLE_THEME = 'TOGGLE_THEME';
 const TOGGLE_PRICE_FOR = 'TOGGLE_PRICE_FOR';
+const SET_SHOP = "SET_SHOP";
 
 export const theme = {
   dark: 'dark',
@@ -33,11 +34,16 @@ export const appReducer = (state = initialState, action) => {
         appTheme: action.newTheme,
       };
     case TOGGLE_PRICE_FOR:
-      console.log(action.priceFor)
       return {
         ...state,
         priceFor: action.priceFor,
       };
+    case SET_SHOP:
+      return {
+        ...state,
+        shop: action.payload,
+      };
+
     default:
       return state;
   }
@@ -58,18 +64,11 @@ export const toggleTheme = (newTheme) => ({
   newTheme,
 });
 
+export const setShop = (newShop) => ({
+  type: SET_SHOP,
+  payload: newShop,
+});
+
 export const getThemeFromStorage = () => {
   return localStorage.getItem('theme');
 }
-
-// export const setThemeInStorage = () => (dispatch) => {
-//   let themeFromStorage = getThemeFromStorage();
-//   let newTheme = theme.light;
-//
-//   if (themeFromStorage) {
-//     newTheme = themeFromStorage === theme.light ? theme.dark : theme.light;
-//   }
-//
-//   localStorage.setItem('theme', newTheme);
-//   dispatch(toggleTheme(newTheme));
-// };

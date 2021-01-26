@@ -135,6 +135,7 @@ router.get("/ymwd", async (req, res) => {
   let date = new Date();
 
   //day
+  date.setDate(date.getDate() + 1);
   date.setHours(0, 0, 0, 0);
   const now = await ymwd(date, "now");
   data.push(now);

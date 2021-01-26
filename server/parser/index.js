@@ -23,9 +23,7 @@ const getPage = async (url) => {
 const parseBrand = async (url) => {
   const html = await getPage(url);
   const $ = cheerio.load(html);
-  const brand = $(".BigProductCardTrademarkName").text();
-  return brand;
-
+  return $(".BigProductCardTrademarkName").text();
 
 };
 
@@ -62,12 +60,12 @@ const getDataPage = async (url, shop) => {
 
   const html = await getPage(url);
   const $ = cheerio.load(html);
-  const cardsOnPage = parseCard($(".products-box__list-item").first(),shop,url);
-  return cardsOnPage;
+  return parseCard($(".products-box__list-item").first(),shop,url);
 
 };
 
 module.exports = async () => {
+
   let allCards = [];
 
   for (const key in link) {
