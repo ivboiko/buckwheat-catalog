@@ -20,7 +20,8 @@ const Cards = ({priceAscending, priceFor, appTheme, togglePriceFor}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const cardsContainerClassName = classNames('container app-child', {
+  const cardsContainerClassName = classNames(
+    'container app-child', {
     'cards-light-container': appTheme === theme.light,
     'cards-dark-container': appTheme === theme.dark,
   });
