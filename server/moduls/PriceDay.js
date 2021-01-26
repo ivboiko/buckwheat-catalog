@@ -14,4 +14,4 @@ const schema = new Schema({
 
 });
 
-module.exports = model("PriceDay", schema);
+module.exports = model("PriceForDay", schema);
