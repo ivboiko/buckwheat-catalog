@@ -37,6 +37,7 @@ export function useDataCard() {
   useEffect(() => {
     const s = bestShop(dataCardsFromDb);
     setCards(s);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [period]);
 
   const filterPeriod = (data, filterIndex, dataCards) => {

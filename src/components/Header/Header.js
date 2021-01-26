@@ -3,7 +3,6 @@ import './Header.scss';
 import ThemeSwitcher from '../common/ThemeSwitcher/ThemeSwitcher';
 import {theme} from '../../redux/reducers/app-reducer';
 import classNames from 'classnames';
-import {useTheme} from '../common/CustomHooks/useTheme';
 
 const Header = ({appTheme}) => {
   const logoClassName = classNames(

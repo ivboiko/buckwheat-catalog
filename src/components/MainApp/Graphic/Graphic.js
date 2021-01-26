@@ -32,6 +32,7 @@ const Graphic = ({appTheme}) => {
     week.request('/sort/week').catch((err) => {
       console.log(err);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Graphic = ({appTheme}) => {
       setBestPrise(year.increasePrise(shopName, year.price));
       setDataGraphic(year.getDataGraphic(shopName));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [week.loading, month.loading, year.loading, period, shopName]);
 
   const graphicClassName = classNames(

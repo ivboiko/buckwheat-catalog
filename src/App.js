@@ -22,7 +22,7 @@ const App = ({appTheme, toggleTheme}) => {
     } else {
       toggleTheme(theme.light);
     }
-  }, []);
+  }, [toggleTheme]);
 
   return (
     <div className={appWrapperClassName}>
